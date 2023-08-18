@@ -9,11 +9,12 @@
     <h3 class="mb-0">My Lists</h3>
     <%= link_to "Create a movie list", new_list_path, class: "btn btn-flat" %>
   </div>
-  <div class="row">
+  <div class="row" >
     <% @lists.each do |list| %>
-      <div class="co-12 col-sm-6 col-md-4 mb-3">
+      <div class="co-12 col-sm-6 col-md-4 mb-3" >
         <%= link_to list_path(list), class:"text-decoration-none" do %>
-          <div class="card-category" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path('list_background.jpg') %>)">
+          <div class="card-category"
+            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= list.photo.attached? ? cl_image_path(list.photo.key, height: 300, crop: :fill) : 'https://img.freepik.com/photos-gratuite/full-shot-femme-prenant-selfie_23-2149153257.jpg' %>')">
             <%= list.name %>
           </div>
         <% end %>

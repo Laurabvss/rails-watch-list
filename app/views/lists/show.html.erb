@@ -13,3 +13,5 @@
 
 <%= link_to "Add a new bookmark", new_list_bookmark_path(@list)%>
 <%= link_to "Back to list", lists_path%>
+
+<%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill %>

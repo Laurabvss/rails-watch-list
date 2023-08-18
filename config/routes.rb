@@ -12,13 +12,10 @@ Rails.application.routes.draw do
   #get 'lists/:id/bookmarks/new', to: 'bookmarks#new', as: :new_bookmark
   #post 'lists/:id/bookmarks', to: 'bookmarks#create'
 
-  resources :lists, only: [:index, :new, :create, :show] do
-    member do
-      get 'lists/:id/bookmarks/new', to: 'bookmarks#new', as: :new_bookmark
-      post 'lists/:id/bookmarks', to: 'bookmarks#create'
-    end
+  root to: "lists#index"
+  # get 'lists/:id', to: 'lists#show', as: :movie
+  resources :lists do
     resources :bookmarks, only: %i[new create]
   end
-  root to: 'lists#index'
-  delete 'bookmarks/:id', to: 'bookmarks#destroy'
+  resources :bookmarks, only: %i[destroy]
 end
